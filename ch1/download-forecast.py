@@ -1,14 +1,13 @@
-import urllib.request
-import urllib.parse
+from bs4 import BeautifulSoup
+import urllib.request as req
 
-API = "http://www.kma.go.kr/weather/forecast/mid-term-rss3.jsp"
-values = {'stnId': '108'}
-params = urllib.parse.urlencode(values)
+url = "http://www.kma.go.kr/weather/forecast/mid-term-rss3.jsp"
 
-url = API + "?" + params
-print("url=", url)
+res = req.urlopen(url)
+soup = BeautifulSoup(res, "html.parser")
 
-data = urllib.request.urlopen(url).read()
-text = data.decode("utf-8")
-#print(text)
+title = soup.find("title").string
+wf = soup.find("wf").string
 
+print(title)
+print(wf)
