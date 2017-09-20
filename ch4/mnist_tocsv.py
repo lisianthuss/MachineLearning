@@ -22,6 +22,7 @@ def to_csv(name, maxdata):
         label = struct.unpack("B", lbl_f.read(1))[0] # 이미지 숫자
         bdata = img_f.read(pixels)
         sdata = list(map(lambda n: str(n), bdata))
+        csv_f.write(str(label)+",")
         csv_f.write(",".join(sdata)+"\r\n")
 
         # save to images for test
@@ -38,5 +39,5 @@ def to_csv(name, maxdata):
     lbl_f.close()
     img_f.close()
 
-to_csv("train", 10)
-to_csv("t10k", 5)
+to_csv("train", 99999)
+to_csv("t10k", 99999)

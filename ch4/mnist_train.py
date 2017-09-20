@@ -15,8 +15,6 @@ def load_csv(fname):
             vals = list(map(lambda n: int(n) / 256, cols))
             images.append(vals)
 
-            print("label:{}, vals:{}\n".format(labels, vals))
-
     return {"labels":labels, "images":images}
 
 data = load_csv("./mnist/train.csv")
